@@ -1,0 +1,75 @@
+package com.mycompany.escreveumafraseeretornavariasinfsobreela;
+import java.util.Scanner;
+
+public class EscreveUmaFraseEretornaVariasInfSobreEla {
+
+    public static void main(String[] args) {
+     Scanner sc = new Scanner(System.in);
+     int a = 0;
+     String teste;
+     String maiu = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+     String vogal = "aeiouAEIOU";
+     char x;
+        
+     System.out.print("Digite uma frase ou duas eu sou um programa e não um policial -> ");
+     teste = sc.nextLine();
+     
+     char temp[] = new char[teste.length()];
+    
+        for(int i = 0; i < teste.length(); i++){      
+            x = teste.charAt(i);
+                if(x != ' '){
+                    a = a + 1;
+                    temp[i] = x;
+                }
+        }
+   System.out.println();
+   System.out.printf("a frase ou palavra tem esta quantidade de caractere -> %d\n", a);
+   System.out.println();
+   
+    for(int i = 0; i < maiu.length(); i++){
+       for(int j = 0; j < teste.length(); j++){
+           if(maiu.charAt(i) == teste.charAt(j)){
+              System.out.printf("as letras Maiusculas na frase ou palavra são -> %c \n",maiu.charAt(i));
+           }
+       }  
+    }
+   int totalVogal = 0; 
+   
+   for(int i = 0; i < vogal.length(); i++){
+       for(int j = 0; j < teste.length(); j++){
+           if(vogal.charAt(i) == teste.charAt(j)){
+               totalVogal = totalVogal + 1;
+           }
+       }
+   }
+   System.out.println();
+   System.out.printf("existem %d vogais",totalVogal);   
+   System.out.println();
+      
+   String teste2;
+   
+   teste2 = teste.toLowerCase();
+   
+   if(teste2.indexOf("ins") == 0){
+       System.out.print("tem o INS no começo da frase");
+   }
+   String temporario[] = new String[teste.length()];
+   
+   temporario = teste2.split(" ");
+   
+   a = 0;
+   a = temporario.length;
+   a = a - 1;
+   
+   String recebe;
+   
+   recebe = temporario[a];
+   
+   if(recebe.equals("ais")){
+   System.out.print("o ultimo valor é AIS");
+   }
+   
+}    
+    
+}
