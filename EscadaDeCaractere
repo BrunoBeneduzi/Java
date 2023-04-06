@@ -1,0 +1,37 @@
+package com.mycompany.escadadecaracatere;
+import java.util.Scanner;
+
+public class EscadaDeCaracatere {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("escreve uma palavra -> ");
+        String teste;
+        teste = sc.nextLine();
+        char x;
+        int total = 0;
+        
+        do{
+            
+        for(int i = 0; i <= total; i++){
+        x = teste.charAt(i);
+        System.out.print(x);
+        }
+               
+        System.out.println();
+        total = total + 1;
+                
+        }while(total < teste.length());
+        
+        do{
+        for(int i = 0; i < (total - 1); i++){
+            x = teste.charAt(i);
+            System.out.print(x);
+        }
+        System.out.println();
+        total -= 1;
+        }while(total >= 0);
+        
+        }
+    
+}
