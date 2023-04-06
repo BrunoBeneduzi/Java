@@ -1,0 +1,24 @@
+package com.mycompany.conversaorealparadolar;
+import java.util.Scanner;
+public class ConversaoRealParaDolar {
+
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    float dolar, real, total;
+   
+        System.out.print("digite a cotação atual do dolar -> ");
+        dolar = sc.nextFloat();
+        System.out.print("Digite o valor em reais para realizar a conversão -> ");
+        real = sc.nextFloat();
+   
+        total = real / dolar;
+   
+        System.out.printf("reais convertido em dolares = %.2f Dolares",total);
+   
+   
+   
+        sc.close();
+    
+       
+    }
+}
