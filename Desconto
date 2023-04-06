@@ -1,0 +1,34 @@
+package com.mycompany.descontodeacordocom_o_genero;
+import java.util.Scanner;
+public class DescontoDeAcordoCom_o_Genero {
+
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    char genero;
+    float valor, desconto, total; 
+    
+    System.out.print("Digite o valor da compra -> ");
+    valor = sc.nextFloat();
+    System.out.print("Digite o Genero [M]asculino ou [F]eminino -> ");
+    genero = sc.next().charAt(0);
+    
+    if(genero == 'm' || genero == 'M'){
+    
+    desconto =  (float)(valor * 0.10);
+    
+    total = valor - desconto;
+    
+    System.out.printf("o valor com desconto de 10 PorCento ficou em %.2f Reais",total );
+    }
+    else if(genero == 'f' || genero == 'F'){
+    
+    desconto =  (float)(valor * 0.15);
+    
+    total = valor - desconto;
+    
+    System.out.printf("o valor com desconto de 15 PorCento ficou em %.2f Reais",total );
+  
+    }
+    sc.close();
+    }
+}
