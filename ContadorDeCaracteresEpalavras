@@ -1,0 +1,27 @@
+package com.mycompany.contaonumerodepalavrasecaracteres;
+import java.util.Scanner;
+
+public class ContaOnumeroDePalavrasEcaracteres {
+
+    public static void main(String[] args) {
+    Scanner sc  = new Scanner(System.in);
+    String texto;
+    
+    System.out.print("digite uma frase -> ");
+    texto = sc.nextLine();
+    
+    String temp[] = new String[texto.length()];
+    
+   temp = texto.split(" ");
+   
+  int contador = 0;
+   for(int i = 0; i < texto.length(); i++){
+       if(texto.charAt(i) != ' '){
+           contador = contador + 1;
+           
+       }
+   }
+    
+   System.out.printf("na frase existem %d caracteres e %d palavras",contador , temp.length);
+    }
+}
