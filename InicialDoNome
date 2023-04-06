@@ -1,0 +1,38 @@
+package com.mycompany.criainiciaisdenome;
+import java.util.Scanner;
+
+public class CriaIniciaisDeNome {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String negada[] = {"da","de","di","do","du"};
+        String nome;
+        
+        System.out.print("digite seu nome -> ");
+        nome = sc.nextLine();
+        
+        String recebe[] = nome.split(" ");
+        
+        char apelido[] = new char[recebe.length];
+        
+        int bolen = 0;
+        
+        for(int i = 0; i < recebe.length; i++){
+            bolen = 0;
+            for(int j = 0; j < negada.length; j++){
+                if(recebe[i].equalsIgnoreCase(negada[j])){
+                    bolen = 1;
+                }
+            }
+            if(bolen == 0){
+                apelido[i] = recebe[i].charAt(0);
+            }
+        }
+        String Teste;
+        Teste = String.valueOf(apelido);
+        
+        System.out.print(Teste.toUpperCase());
+           
+        
+    }
+}
