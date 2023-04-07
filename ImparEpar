@@ -1,0 +1,38 @@
+package com.mycompany.numerosaleatoriosimparepar;
+import java.util.Random;
+
+public class NumerosAleatoriosImparEpar {
+
+    public static void main(String[] args) {
+        Random gerador = new Random();
+        int vetor[] = new int[10];
+        int temp;
+        
+        for(int i = 0; i < vetor.length; i = i + 2){
+            do{
+                do{
+                temp = gerador.nextInt(20);
+                
+                }while(temp == 0);
+            }while(temp % 2 != 0);
+            vetor[i] = temp;
+        }
+        
+        for(int i = 1; i < vetor.length; i = i + 2){
+            do{
+                do{
+                temp = gerador.nextInt(20);
+                
+                }while(temp == 0);
+            }while(temp % 2 != 1);
+            vetor[i] = temp;
+        }
+      
+        for(int i = 0; i < vetor.length; i++){
+            System.out.printf(" %d ",vetor[i]);
+        }
+        
+        
+        
+    }
+}
