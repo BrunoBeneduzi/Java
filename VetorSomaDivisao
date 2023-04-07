@@ -1,0 +1,14 @@
+package com.mycompany.vetorcomsomaemediadetodos;
+
+public class VetorComSomaEmediaDeTodos {
+
+    public static void main(String[] args) {
+        int vetor[] = {1, 2, 3, 4, 5, 6, 7, 8, 92, 10, 9};
+        int total = 0, divisivel = 0;
+        for(int i = 0; i < vetor.length; i++){
+            total = total + vetor[i];   
+        }
+        divisivel = total / vetor.length;
+        System.out.printf("o total deu = %d dividido por %d deu = %d",total, vetor.length, divisivel);
+    }
+}
