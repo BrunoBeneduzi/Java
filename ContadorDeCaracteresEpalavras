@@ -1,27 +1,76 @@
-package com.mycompany.contaonumerodepalavrasecaracteres;
+package com.mycompany.escreveumafraseeretornavariasinfsobreela;
 import java.util.Scanner;
 
-public class ContaOnumeroDePalavrasEcaracteres {
+public class EscreveUmaFraseEretornaVariasInfSobreEla {
 
     public static void main(String[] args) {
-    Scanner sc  = new Scanner(System.in);
-    String texto;
+     Scanner sc = new Scanner(System.in);
+     int a = 0;
+     String teste;
+     String maiu = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+     String vogal = "aeiouAEIOU";
+     char x;
+        
+     System.out.print("Digite uma frase ou duas eu sou um programa e não um policial -> ");
+     teste = sc.nextLine();
+     
+     char temp[] = new char[teste.length()];
     
-    System.out.print("digite uma frase -> ");
-    texto = sc.nextLine();
-    
-    String temp[] = new String[texto.length()];
-    
-   temp = texto.split(" ");
+        for(int i = 0; i < teste.length(); i++){      
+            x = teste.charAt(i);
+                if(x != ' '){
+                    a = a + 1;
+                    temp[i] = x;
+                }
+        }
+   System.out.println();
+   System.out.printf("a frase ou palavra tem esta quantidade de caractere -> %d\n", a);
+   System.out.println();
    
-  int contador = 0;
-   for(int i = 0; i < texto.length(); i++){
-       if(texto.charAt(i) != ' '){
-           contador = contador + 1;
-           
+    for(int i = 0; i < maiu.length(); i++){
+       for(int j = 0; j < teste.length(); j++){
+           if(maiu.charAt(i) == teste.charAt(j)){
+              System.out.printf("as letras Maiusculas na frase ou palavra são -> %c \n",maiu.charAt(i));
+           }
+       }  
+    }
+   int totalVogal = 0; 
+   
+   for(int i = 0; i < vogal.length(); i++){
+       for(int j = 0; j < teste.length(); j++){
+           if(vogal.charAt(i) == teste.charAt(j)){
+               totalVogal = totalVogal + 1;
+           }
        }
    }
+   System.out.println();
+   System.out.printf("existem %d vogais",totalVogal);   
+   System.out.println();
+      
+   String teste2;
+   
+   teste2 = teste.toLowerCase();
+   
+   if(teste2.indexOf("ins") == 0){
+       System.out.print("tem o INS no começo da frase");
+   }
+   String temporario[] = new String[teste.length()];
+   
+   temporario = teste2.split(" ");
+   
+   a = 0;
+   a = temporario.length;
+   a = a - 1;
+   
+   String recebe;
+   
+   recebe = temporario[a];
+   
+   if(recebe.equals("ais")){
+   System.out.print("o ultimo valor é AIS");
+   }
+   
+}    
     
-   System.out.printf("na frase existem %d caracteres e %d palavras",contador , temp.length);
-    }
 }
+           
