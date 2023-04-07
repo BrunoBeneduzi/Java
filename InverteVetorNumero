@@ -1,0 +1,14 @@
+package com.mycompany.vetorinvertido;
+
+
+public class VetorInvertido {
+
+    public static void main(String[] args) {
+        int vetor[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int i = 0;
+        
+      for(i = (vetor.length - 1); i >= 0; i--){
+           System.out.printf(" - %d",vetor[i]);
+       }        
+    }
+}
