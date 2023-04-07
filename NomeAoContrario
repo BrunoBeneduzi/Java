@@ -1,0 +1,18 @@
+package com.mycompany.nomedetrasparafrente;
+import java.util.Scanner;
+
+public class NomeDeTrasParaFrente {
+
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String texto;
+    System.out.print("digite seu nome e sobrenome -> ");
+    texto = sc.nextLine();
+    texto = texto.toUpperCase();
+    
+    for(int i = texto.length() - 1; i >= 0; i-- ){
+        System.out.print(texto.charAt(i));
+    }
+    
+    }
+}
