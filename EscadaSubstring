@@ -1,0 +1,19 @@
+package com.mycompany.usandosubstringparacriarescada;
+import java.util.Scanner;
+public class UsandoSubstringParaCriarEscada {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String teste;
+        System.out.print("digite uma palavra -> ");
+        teste = sc.nextLine();
+        
+        for(int i = 0; i <= teste.length(); i++){
+            System.out.println(teste.substring(0, i));
+        }
+        
+        for(int i = (teste.length() - 1); i > 0; i--){
+            System.out.println(teste.substring(0, i));
+        }
+    }
+}
