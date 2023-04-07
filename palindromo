@@ -1,0 +1,64 @@
+package com.mycompany.palindromo;
+import java.util.Scanner;
+
+public class Palindromo {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        String palin;
+        System.out.print("escreva um palindromo para verificar -> ");
+        palin = sc.nextLine();
+        char recebe[] = new char[palin.length()];
+        int contador = 0;
+        int confirm = 0;
+        boolean bolen = false;
+        palin = palin.toLowerCase();
+        for(int i = 0; i < palin.length(); i++){
+            if(palin.charAt(i) != ' '){
+                recebe[contador] = palin.charAt(i);
+                contador += 1;
+                confirm += 1;
+            }
+        }
+    int temp;
+    temp = contador / 2;
+   
+    
+    if(confirm % 2 == 0){
+    for(int i = 0; i < temp; i ++){
+       
+       if(recebe[i] == recebe[contador - 1]){
+           bolen = true;
+       }
+       else{
+            bolen = false;
+            break;
+       }
+       contador -= 1;
+    }
+    }
+       
+    if(confirm % 2 != 0){
+        for(int i = 0; i < temp; i ++){
+       
+       if(recebe[i] == recebe[contador - 1]){
+           bolen = true;
+       }
+       else{
+            bolen = false;
+            break;
+       }
+       contador -= 1;
+    }
+    }
+    if(bolen){
+            System.out.print("verdadeiro");
+        }
+        else{
+            System.out.print("falso");
+    }
+    }
+    
+    
+}
