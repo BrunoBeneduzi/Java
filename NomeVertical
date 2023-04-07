@@ -1,0 +1,19 @@
+package com.mycompany.palavranavertical;
+import java.util.Scanner;
+
+public class PalavraNaVertical {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String teste;
+        char x;
+        
+        System.out.print("digite um nome ou frase -> ");
+        teste = sc.nextLine();
+        teste = teste.toUpperCase();
+        for(int i = 0; i < teste.length(); i++){
+                System.out.println(teste.charAt(i));
+              
+        }
+    }
+}
