@@ -1,0 +1,45 @@
+package com.mycompany.lernumerosemextenso;
+
+public class LerNumerosEmExtenso {
+
+    public static void main(String[] args) {
+        int numero = 1234;
+        String teste;
+        char x;
+        
+        teste = String.valueOf(numero);
+        
+        for(int i = 0; i < teste.length(); i++){
+            x = teste.charAt(i);
+                if(x == '1'){
+                    System.out.print("UM "); 
+                }
+                else if(x == '2'){
+                    System.out.print("DOIS ");
+                }
+                 else if(x == '3'){
+                    System.out.print("TRES ");
+                }
+                 else if(x == '4'){
+                   System.out.print("QUATRO ");
+                }
+                 else if(x == '5'){
+                    System.out.print("CINCO ");
+                }
+                 else if(x == '6'){
+                    System.out.print("SEIS");
+                }
+                 else if(x == '7'){
+                    System.out.print("SETE");
+                }
+                 else if(x == '8'){
+                    System.out.print("OITO");
+                }
+                 else if(x == '9'){
+                    System.out.print("NOVE");
+                }
+               
+        }
+          
+    }
+}
