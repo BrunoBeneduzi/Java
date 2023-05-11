@@ -1,0 +1,185 @@
+public class Velha {
+	private String mapa[][] = new String[3][3];
+	private boolean erro = true;
+	private final int MATRIZ = 2;
+	public Velha() {
+		for(int i = 0; i < this.mapa.length; i++) for(int j = 0; j < this.mapa.length; j++) this.mapa[i][j] = "-";
+	}
+
+	public void verVelha() {
+		System.out.println("    0  1  2");
+		System.out.println("  _________");
+		for(int i = 0; i < this.mapa.length; i++) {
+			for(int j = 0; j < this.mapa.length; j++) {
+				if(j == 0)	System.out.print(i + " | " + this.mapa[i][j] + "  ");
+				else System.out.print(this.mapa[i][j] + "  ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public void setX(int x, int y) {
+		this.erro = true;
+		if(this.mapa[x][y] == "-") {
+			this.mapa[x][y] = "X"; 
+			this.verVelha();
+			this.erro = false;
+		}
+		else {
+			System.out.println("Ocupado, jogue novamente, JOGADOR 1");
+			this.verVelha();
+			this.erro = true;
+		}		
+	}
+	
+	public void setO(int x, int y) {
+		this.erro = true;
+		if(this.mapa[x][y] == "-") {
+			this.mapa[x][y] = "O"; 
+			this.verVelha();
+			this.erro = false;
+		}
+		else {
+			System.out.println("Ocupado, jogue novamente, JOGADOR 2");
+			this.verVelha();
+			this.erro = true;
+		}		
+	}
+	
+	public boolean getErro() {
+		return this.erro;
+	}
+	
+	//para verificar quem venceu
+	public boolean vencedor(String jogador) {
+		int temp = this.MATRIZ;
+		boolean vencedor = false;
+			//verifica da esquerda para direita
+			for(int i = 0; i <= this.MATRIZ; i++) {
+				for(int j = 0; j <= this.MATRIZ; j ++) {
+					if(this.mapa[i][j] == jogador) vencedor = true;
+					else {
+						vencedor = false;
+						break;					
+					}								
+				}
+				if(vencedor)break;
+			}
+			if(vencedor) return vencedor;
+			//verifica de cima para baixo
+				for(int i = 0; i <= this.MATRIZ; i++) {
+					for(int j = 0; j <= this.MATRIZ; j ++) {
+						if(this.mapa[j][i] == jogador) vencedor = true;
+						else {
+							vencedor = false;
+							break;
+						}
+							
+					}
+					if(vencedor)break;
+				}
+				if(vencedor) return vencedor;
+					// verifica de agonal, de cima para baixo, esquerda para direita
+					for(int i = 0; i <= this.MATRIZ; i++) {
+						if(this.mapa[i][i] == jogador) vencedor = true;
+						else {
+							vencedor = false;
+							break;
+						}
+					}
+					if(vencedor) return vencedor;
+					//verifica deagonal, de cima para baixo, direita para esquerda
+					for(int i = 0; i <= this.MATRIZ; i ++) {
+						
+						if(this.mapa[i][temp - i] == jogador) vencedor = true;
+							
+						else {
+							vencedor = false;
+							break;
+						}					
+					}
+					if(vencedor) return vencedor;
+						
+				return false;	
+	}
+}
+
+------------------------Codigo Main abaixo----------------------------
+
+
+import java.util.Scanner;
+public class Principal {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Velha jogo = new Velha();
+		int x = 0, y = 0, cont = 0;	
+		String jogador;
+		boolean decisao = true;
+		
+		jogo.verVelha();
+			
+		while(cont < 9) {
+			
+			System.out.println("Jogador 1 pode jogar");
+			
+			do {
+				do{
+					try {
+						do {
+							System.out.print("Escolha uma Linha-> ");
+							x = Integer.parseInt(sc.nextLine());
+							System.out.print("Escolha uma Coluna -> ");
+							y = Integer.parseInt(sc.nextLine());
+						}while(x < 0 || x >= 3 || y < 0 || y >= 3);
+						decisao = false;
+					}catch(NumberFormatException e) {
+						System.out.println("[ERRO] Insira um NUMERO valido");
+						decisao = true;
+					}
+				}while(decisao);
+				jogo.setX(x, y);
+				jogador = "X";
+			}while(jogo.getErro());
+				cont++;
+				
+				//verifica se o jogador 1 VENCEU
+				if(jogo.vencedor(jogador)) { 
+					System.out.println("JOGADOR 1 VENCEU"); 
+					break;
+				}
+				
+			if(cont == 9) break;
+			
+			System.out.println("Jogador 2 pode jogar");
+			
+			do {
+				do{
+					try {
+						do {
+							System.out.print("Escolha uma Linha-> ");
+							x = Integer.parseInt(sc.nextLine());
+							System.out.print("Escolha uma Coluna -> ");
+							y = Integer.parseInt(sc.nextLine());
+						}while(x < 0 || x >= 3 || y < 0 || y >= 3);
+						
+						decisao = false;
+					}catch(NumberFormatException e) {
+						System.out.println("[ERRO] Insira um NUMERO valido");
+						decisao = true;
+					}
+				}while(decisao);
+				jogo.setO(x, y);
+				jogador = "O";
+				
+			}while(jogo.getErro());
+			
+				cont++;
+				//Verifica se o jogador 2 VENCEU
+				if(jogo.vencedor(jogador)) { 
+					System.out.println("JOGADOR 2 VENCEU"); 
+					break;
+				}
+		}	
+	}
+}
