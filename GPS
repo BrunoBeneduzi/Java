@@ -1,0 +1,340 @@
+public class Gps {
+	private String cenario[][] = new String[11][11];
+	private int li, ci, lf, cf;
+	
+	public Gps() {
+		
+	}
+	
+	public void setPosicao(int li, int ci, int lf, int cf) {
+		this.li = li;
+		this.ci = ci;
+		this.lf = lf;
+		this.cf = cf;
+		
+		this.cenario[this.li][this.ci] = "[R]";
+		this.cenario[this.lf][this.cf] = "[C]";
+		this.cenario[5][5] = "[B]";
+		
+		for(int i = 0; i < this.cenario.length; i++) {
+			for(int j = 0; j < this.cenario.length; j++) {
+				
+				if(this.cenario[i][j] == "[R]") continue;
+				else if(this.cenario[i][j] == "[C]") continue;
+				else if(this.cenario[i][j] == "[B]") continue;
+				else {
+					this.cenario[i][j] = "[ ]";
+				}
+			}
+		}
+	}
+	
+	
+	//anda da esquerda para a direita na Linha, ->->-> : Crescente 0 1 2 3 4 coluna;
+	public boolean get1AndaDireita() {
+		if(this.li == this.lf && this.ci < this.cf) {
+			this.ci++;
+				if(this.cenario[this.li][this.ci] == "[B]") {
+					if(this.li == this.lf) {
+						this.li--;
+						this.cenario[this.li][this.ci] = "[X]";
+						return true;
+					}
+					else if(this.li < this.lf) {
+						this.li--;
+						this.cenario[this.li][this.ci] = "[X]";
+						return true;
+					}
+					else {
+						this.li++;
+						this.cenario[this.li][this.ci] = "[X]";
+						return true;
+					}
+				}
+				else {
+					this.cenario[this.li][this.ci] = "[X]";
+					return true;
+				}
+		}
+		return false;
+	}
+	
+	
+	//anda da direita para a esquerda na Linha, <-<-<- : decrecente 4 3 2 1 0  coluna;
+	public boolean get2AndaEsquerda() {
+		if(this.li == this.lf && this.ci > this.cf) {
+			this.ci--;
+				if(this.cenario[this.li][this.ci] == "[B]") {
+					if(this.li == this.lf) {
+						this.li--;
+						this.cenario[this.li][this.ci] = "[X]";
+						return true;
+					}
+					else if(this.li > this.lf) {
+						this.li--;
+						this.cenario[this.li][this.ci] = "[X]";
+						return true;
+					}
+					else {
+						this.li++;
+						this.cenario[this.li][this.ci] = "[X]";
+						return true;
+					}
+				}
+				else {
+					this.cenario[this.li][this.ci] = "[X]";
+					return true;
+				}
+		}
+		return false;
+	}
+	
+	//Anda de cima para baixo
+		public boolean get3AndaCimaParaBaixo() {
+			if(this.ci == this.cf && this.li < this.lf) {
+				this.li++;
+					if(this.cenario[this.li][this.ci] == "[B]") {
+						if(this.ci == this.cf) {
+							this.ci--;
+							this.cenario[this.li][this.ci] = "[X]";
+							return true;
+						}
+						else if(this.ci > this.cf) {
+							this.ci--;
+							this.cenario[this.li][this.ci] = "[X]";
+							return true;
+						}
+						else {
+							this.ci++;
+							this.cenario[this.li][this.ci] = "[X]";
+							return true;
+						}
+					}
+					else {
+						this.cenario[this.li][this.ci] = "[X]";
+						return true;
+					}
+			}
+			return false;
+		}
+		//Anda de baixo para cima
+		public boolean get4AndaBaixoParaCima() {
+			if(this.ci == this.cf && this.li > this.lf) {
+				this.li--;
+					if(this.cenario[this.li][this.ci] == "[B]") {
+						if(this.ci == this.cf) {
+							this.ci--;
+							this.cenario[this.li][this.ci] = "[X]";
+							return true;
+						}
+						else if(this.ci > this.cf) {
+							this.ci--;
+							this.cenario[this.li][this.ci] = "[X]";
+							return true;
+						}
+						else {
+							this.ci++;
+							this.cenario[this.li][this.ci] = "[X]";
+							return true;
+						}
+					}
+					else {
+						this.cenario[this.li][this.ci] = "[X]";
+						return true;
+					}
+			}
+			return false;
+		}
+		
+		//Anda diagonalmente de cima para baixo, esquerda até a direita
+				public boolean get5AndaDiagonalEsquerdaDireitaCimaBaixo() {
+					if(this.li < this.lf && this.ci < this.cf) {
+						this.li++;
+						this.ci++;
+							if(this.cenario[this.li][this.ci] == "[B]") {
+								if(this.cf > this.lf) {
+									this.li--;
+									this.cenario[this.li][this.ci] = "[X]";
+									return true;
+								}
+								else if(this.lf == this.cf) {
+									this.li--;
+									this.cenario[this.li][this.ci] = "[X]";
+									return true;
+								}
+								else {
+									this.ci--;
+									this.cenario[this.li][this.ci] = "[X]";
+									return true;
+								}
+							}
+							else {
+								this.cenario[this.li][this.ci] = "[X]";
+								return true;
+							}
+					}
+					return false;
+				}
+				
+				//Anda diagonalmente de baixo para cima, direita até a esquerda
+				public boolean get6AndaDiagonalDireitaParaEsquerdaBaixoCima() {
+					if(this.li > this.lf && this.ci > this.cf) {
+						this.li--;
+						this.ci--;
+							if(this.cenario[this.li][this.ci] == "[B]") {
+								if(this.cf > this.lf) {
+									this.ci++;
+									this.cenario[this.li][this.ci] = "[X]";
+									return true;
+								}
+								else if(this.lf == this.cf) {
+									this.li++;
+									this.cenario[this.li][this.ci] = "[X]";
+									return true;
+								}
+								else {
+									this.li++;
+									this.cenario[this.li][this.ci] = "[X]";
+									return true;
+								}
+							}
+							else {
+								this.cenario[this.li][this.ci] = "[X]";
+								return true;
+							}
+					}
+					return false;
+				}
+				
+				//Anda diagonalmente de baixo para cima, esquerda até direita, começando na esquerda de baixo
+				public boolean get7AndaDiagonalEsquerdaBaixoDireita() {
+					if(this.li > this.lf && this.ci < this.cf) {
+						this.li--;
+						this.ci++;
+							if(this.cenario[this.li][this.ci] == "[B]") {
+								if(this.cf + this.lf <= 4) {
+									this.ci--;
+									this.cenario[this.li][this.ci] = "[X]";
+									return true;
+								}
+								else{
+									this.li++;
+									this.cenario[this.li][this.ci] = "[X]";
+									return true;
+								}
+								
+							}
+							else {
+								this.cenario[this.li][this.ci] = "[X]";
+								return true;
+							}
+					}
+					return false;
+				}
+		
+				//Anda diagonalmente de cima para baixo, direita para esquerda, começando na direita de cima
+				public boolean get8AndaDiagonalmenteCimaBaixoDireitaEsquerda() {
+					if(this.li < this.lf && this.ci > this.cf) {
+						this.li++;
+						this.ci--;
+							if(this.cenario[this.li][this.ci] == "[B]") {
+								if(this.cf + this.lf <= 4) {
+									this.li--;
+									this.cenario[this.li][this.ci] = "[X]";
+									return true;
+								}
+								else{
+									this.ci++;
+									this.cenario[this.li][this.ci] = "[X]";
+									return true;
+								}
+								
+							}
+							else {
+								this.cenario[this.li][this.ci] = "[X]";
+								return true;
+							}
+					}
+					return false;
+				}
+				
+				public boolean chegou() {
+					if(this.li == this.lf && this.ci == this.cf) return false;
+					else return true;
+				}
+				//para não adicionar 8 movimentos na MAIN, criei apenas um METODO que chama e testa todos eles
+				public void tabuleiro() {
+					if(this.get1AndaDireita());					
+					else if(this.get2AndaEsquerda());											
+					else if(this.get3AndaCimaParaBaixo());
+			        else if(this.get4AndaBaixoParaCima());
+			        else if(this.get5AndaDiagonalEsquerdaDireitaCimaBaixo());
+					else if(this.get6AndaDiagonalDireitaParaEsquerdaBaixoCima());
+					else if(this.get7AndaDiagonalEsquerdaBaixoDireita());
+					else if(this.get8AndaDiagonalmenteCimaBaixoDireitaEsquerda());
+				}
+				
+				// mostra o Tabuleiro atual
+				public void verCenario() {
+					for(int i = 0; i < this.cenario.length; i++) {
+						
+						for(int j = 0; j < this.cenario.length; j++) {	
+							System.out.print(this.cenario[i][j] + " ");			
+						}
+						System.out.println();						
+					}
+				}				
+}
+
+----------------MAIN ABAIXO-----------------------
+
+import java.util.Scanner;
+public class Principal 
+{
+	
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		int li, ci, lf, cf;
+		boolean teste = true;
+		Gps cenario = new Gps();
+		
+		//testa para  verificar se os numeros estão dentro do limite da matriz e que são numeros inteiros e não letras ou outros simbolos
+		do {
+			try 
+			{
+				do 
+				{
+					System.out.print("Linha Inicial -> ");
+					li = Integer.parseInt(sc.nextLine());
+					System.out.print("Coluna Inicial -> ");
+					ci = Integer.parseInt(sc.nextLine());
+					System.out.print("Linha Final -> ");
+					lf = Integer.parseInt(sc.nextLine());
+					System.out.print("Coluna Final -> ");
+					cf = Integer.parseInt(sc.nextLine());
+				}while(li == 5 && ci == 5 || lf == 5 && cf == 5 );
+				    teste = false;					
+				     cenario.setPosicao(li, ci, lf, cf);				
+			}
+			catch(NumberFormatException e)
+			{
+				System.out.println("ERRO VALOR INVALIDO COLOCADO");
+				teste = true;
+			}
+			catch(ArrayIndexOutOfBoundsException e) {
+				System.out.println("Numero maior que 10");
+				teste = true;
+			}
+			
+		}while(teste);
+				
+			do 
+			{
+				cenario.tabuleiro();
+				System.out.println();
+				cenario.verCenario();
+			}while(cenario.chegou());		
+				System.out.println("FINALIZADO");
+	}	
+}
